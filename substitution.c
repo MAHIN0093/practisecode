@@ -51,11 +51,11 @@ int main(int argc, string argv[])
                     {
                         if(islower(plaintext[i]))
                         {
-                            cipher(tolower(plaintext[i]));
+                            cipher(tolower(plaintext[i]),argv[i]);
                         }
                         else
                         {
-                            cipher(toupper(plaintext[i]));
+                            cipher(toupper(plaintext[i]),argv[i]);
                         }
                     }
                     else
