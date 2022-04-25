@@ -118,11 +118,12 @@ void record_preferences(int ranks[])
 {
     for (int i = 0; i < candidate_count; i++)
     {
-        for (int j = 0; j < candidate_count; j++)
+        for (int j = 0; j < candidate_count-1; j++)
         {
             if ( ranks[i] > ranks[j])
             {
                 preferences[ranks[i]][ranks[j]]++;
+                printf("%d\n", preferences[ranks[i]][ranks[j]]);
             }
         }
     }
@@ -158,8 +159,19 @@ void add_pairs(void)
 // Sort pairs in decreasing order by strength of victory
 void sort_pairs(void)
 {
-    
-    return;
+    for (int i = 0; i < pair_count-1; i++)
+    {
+        for (int j = i + 1; j < pair_count-1; j++)
+        {
+            if ((preferences[pairs[i].winner-pairs[i].loser]) < (preferences[pairs[j].winner-pairs[j].loser]))
+            {
+                const pair temp = pairs[i];
+                pairs[i] = pairs[j];
+                pairs[j] = temp;
+            }
+            return;
+        }
+    }
 }
 
 // Lock pairs into the candidate graph in order, without creating cycles
